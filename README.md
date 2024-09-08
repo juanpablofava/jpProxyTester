@@ -5,4 +5,5 @@ just run with:
 `python3 jpPtoxyTester.py`
 
 Sample output:
+
 ![jpProxyTester](./assets/jpProxyTester.png)
