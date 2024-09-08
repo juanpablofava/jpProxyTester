@@ -2,7 +2,7 @@
 My alternative to FOGLDN that can run in Linux
 
 just run with:
-`python3 jpPtoxyTester.py`
+`python3 jpProxyTester.py`
 
 Sample output:
 
