@@ -32,18 +32,38 @@ def test_proxy(proxy):
         return f"{proxy}: {RED}FAIL{RESET}"
 
 def main():
+    proxies_list = []
     try:
         while True:
-            print("\n👇📝 Paste your list here and press Enter twice to start testing ⏎:")
-            proxies_list = []
-            while True:
-                line = input()
-                if line == '':
+            if not proxies_list:
+                print("\n👇📝 Paste your list here and press Enter twice to start testing ⏎:")
+                while True:
+                    line = input()
+                    if line == '':
+                        break
+                    proxies_list.append(line)
+            
+            if proxies_list:
+                print(f"\n🧪 Testing {len(proxies_list)} proxies...")
+                for proxy in proxies_list:
+                    result = test_proxy(proxy)
+                    print(result)
+                
+                print(f"\n✅ Testing completed for {len(proxies_list)} proxies!")
+                print("Options:")
+                print("1. Press Enter to retest the same proxies")
+                print("2. Type 'new' to enter a new list")
+                print("3. Type 'quit' to exit")
+                
+                choice = input("\nYour choice: ").strip().lower()
+                if choice == 'new':
+                    proxies_list = []
+                elif choice == 'quit':
                     break
-                proxies_list.append(line)
-            for proxy in proxies_list:
-                result = test_proxy(proxy)
-                print(result)
+                # If just Enter (empty string), it will retest the same proxies
+            else:
+                print("No proxies to test!")
+                
     except KeyboardInterrupt:
         print("\nbye!")
 
